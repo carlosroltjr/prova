@@ -44,36 +44,29 @@
     <div class="container container-funcionario">
         
 		<div class="bg-dark frm-titulo">
-            <h3>Funcionário</h3>
+            <h3>Usuário</h3>
         </div>
 
-        <form th:object="${funcionario}">
+        <form th:object="${user}">
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Código</label>
+                <label class="col-sm-2 col-form-label">Id</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="codigo" th:field="${funcionario.id}" readonly>
+                    <input type="text" class="form-control" id="codigo" th:field="${user.id}" readonly>
                 </div>    
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Nome</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nome" th:field="${funcionario.nome}" readonly>
+                    <input type="text" class="form-control" id="nome" th:field="${user.name}" readonly>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Cargo</label>
+                <label class="col-sm-2 col-form-label">Cpf</label>
                 <div class="col-sm-10">
-                    <select class="form-control" th:field="${funcionario.cargo}" disabled>
-                        <option value="Contabilidade">Contabilidade</option>
-                        <option value="Financeiro">Financeiro</option>
-                        <option value="Gerente">Gerente</option>
-                        <option value="TI">TI</option>
-                        <option value="Vendedor">Vendedor</option>
-                    </select>
-                    
-                </div>    
+                    <input type="text" class="form-control" id="login" th:field="${user.cpf}" readonly>
+                </div>
             </div>
 
             <div class="form-group row">

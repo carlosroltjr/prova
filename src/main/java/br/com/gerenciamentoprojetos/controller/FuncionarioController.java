@@ -68,6 +68,4 @@ public class FuncionarioController {
 		
 		return "redirect:/funcionario/list";
 	}
-	
-
 }

@@ -42,12 +42,12 @@
     <!--CONTEÚDO-->
     <div class="container container-funcionarios">
 		<div class="bg-dark frm-titulo">
-            <h3>Funcionários</h3>
+            <h3>Usuários</h3>
         </div>
 
         <div class="btn-novo">
             <button class="btn btn-outline-success"
-                th:href="@{/funcionario/add}"
+                th:href="@{/user/add}"
                 onclick="window.location.href='./add'">
                 <i class="fa fa-plus-circle"></i> Novo
             </button>
@@ -58,21 +58,21 @@
 	        <table class="table">
 	            <thead class="table-dark">  
 	                <tr>
-	                    <th>Código</th>
+	                    <th>Cpf</th>
 	                    <th>Nome</th>
-	                    <th colspan="4">Cargo</th>
+	                    <th colspan="4">login</th>
 	                </tr>
 	            </thead>
 	            <tbody>
-	                <tr th:each="funcionario: ${funcionarios}">
-	                    <td class="td-codigo" th:text="${funcionario.id}"></td>
-	                    <td th:text="${funcionario.nome}"></td>
-	                    <td th:text="${funcionario.cargo}"></td>
-	                    <td class="td-btn"><a th:href="@{'/funcionario/view/'+${funcionario.id}}"><i class="fa fa-eye cl-fa"></i></a></i></td>
-	                    <td class="td-btn"><a th:href="@{'/funcionario/edit/'+${funcionario.id}}"><i class="fa fa-edit cl-fa"></i></a></i></td>
+	                <tr th:each="user: ${users}">
+	                    <td class="td-codigo" th:text="${user.cpf}"></td>
+	                    <td th:text="${user.name}"></td>
+	                    <td th:text="${user.login}"></td>
+	                    <td class="td-btn"><a th:href="@{'/user/view/'+${user.id}}"><i class="fa fa-eye cl-fa"></i></a></i></td>
+	                    <td class="td-btn"><a th:href="@{'/user/edit/'+${user.id}}"><i class="fa fa-edit cl-fa"></i></a></i></td>
 	                    <td class="td-btn">
 	                    	<button type="button" class="btn btn-outline-danger" 
-	                    			th:onclick="|showModalDeletar(${funcionario.id})|">
+	                    			th:onclick="|showModalDeletar(${user.id})|">
 	                    		<i class="fa fa-trash-alt cl-fa-delete"></i>
 	                    	</button>
 	                    </td>
@@ -96,7 +96,7 @@
 		        
 		        	<!-- Modal body -->
 		        	<div class="modal-body">
-		          		Você realmente deseja deletar o Funcionário?
+		          		Você realmente deseja deletar o Usuário?
 		        	</div>
 		        
 		        	<!-- Modal footer -->
@@ -107,7 +107,7 @@
 						</button>
 						
 		          		<button type="button" class="btn btn-danger btn-modal-footer" data-dismiss="modal"
-		          				th:onclick="deletar('funcionario')">
+		          				th:onclick="deletar('user')">
 		          			<i class="fa fa-trash"> </i> Deletar
 						</button>
 						

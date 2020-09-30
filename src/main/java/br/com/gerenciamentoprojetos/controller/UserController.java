@@ -33,6 +33,16 @@ public class UserController {
         return "user/add";
     }
 
+    @PostMapping("user/save")
+    public String saveUser(User user) {
+        try {
+            userRepository.save(user);
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        return "redirect:/user/view/" + user.getId();
+    }
 
     @GetMapping("/user/view/{id}")
     public String viewUser(@PathVariable long id, Model model) {
@@ -48,32 +58,10 @@ public class UserController {
         return "user/edit";
     }
 
-    @PostMapping("user/save")
-    public String saveUser(User user) {
-        try {
-            userRepository.save(user);
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
-
-        return "redirect:/user/view/" + user.getId();
-    }
-
     @GetMapping("user/delete/{id}")
     public String deleteUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userRepository.findById(id));
 
-        return "user/delete";
-    }
-
-    @PostMapping("user/delete")
-    public String deleteUser(User user) {
-        try {
-            userRepository.delete(user);;
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
-
-        return "redirect:/user/list";
+        return "redirect:user/delete";
     }
 }
