@@ -60,8 +60,12 @@ public class UserController {
 
     @GetMapping("user/delete/{id}")
     public String deleteUser(@PathVariable long id, Model model) {
-        model.addAttribute("user", userRepository.findById(id));
+        try {
+            userRepository.deleteById(id);
+        }catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
 
-        return "redirect:user/delete";
+        return "redirect:/user/list";
     }
 }
